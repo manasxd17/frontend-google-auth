@@ -1,16 +1,15 @@
 import axios from 'axios'
-
-const add_user = async(name, email, access_token) => {
+// import { AuthHeader } from './Auth_header'
+const add_user = async(access_token) => {
     const userData = {
-        'name':name,
-        'email':email,
         'token':access_token
     }
     try{
         const structure = {
-            'method':'post',
-            'url':'http://9755-202-142-70-145.ngrok.io',
-            'data':userData
+            method:'post',
+            url:'http://localhost/auth-service/auth/swap-token',
+            headers:{'Content-Type':'application/x-www-form-urlencoded','X_Requested_With':'XMLHttpRequest'},
+            data:userData
         }
         const response = await axios(structure)
         return response

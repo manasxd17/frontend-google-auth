@@ -9,9 +9,10 @@ export default function SignIn() {
         try {
             event.preventDefault()
             const res = await GoogleAuth()
-            const result = await add_user(res.additionalUserInfo.profile.given_name, res.additionalUserInfo.profile.email, res.credential.accessToken)
-            navigate('/home')
+            const result = await add_user(res.id_token)
             console.log(result)
+            navigate('/home')
+            
         }
         catch (error) {
             console.log(error)
