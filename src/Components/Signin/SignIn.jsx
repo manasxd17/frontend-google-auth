@@ -9,7 +9,8 @@ export default function SignIn() {
         try {
             event.preventDefault()
             const res = await GoogleAuth()
-            const result = await add_user(res.id_token)
+            console.log(res.credential.idToken)
+            const result = await add_user(res.credential.idToken)
             console.log(result)
             navigate('/home')
             
